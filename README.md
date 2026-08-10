@@ -1,14 +1,13 @@
 # Kausalsystem
 
-## Oekonomischer Kausalrechner (`kausalrechner/`, aktiv)
+Oekonomischer Kausalrechner: Ausgehend von einem oekonomischen Konzept (z.B.
+"Unternehmenssteuer"), einer Richtung ("hoeher"/"geringer") und einer Staerke in
+Prozentpunkten werden alle davon betroffenen Kausalketten in einem gerichteten Graphen
+verfolgt. Jede Kausalkante hat eine frei definierbare Formel (kein fester "Staerke"-
+Sonderfall), die beliebig viele oekonomische Parameter (Elastizitaeten, Daempfungsfaktoren,
+Deckelungen, ...) referenzieren kann.
 
-Ausgehend von einem oekonomischen Konzept (z.B. "Unternehmenssteuer"), einer Richtung
-("hoeher"/"geringer") und einer Staerke in Prozentpunkten werden alle davon betroffenen
-Kausalketten in einem gerichteten Graphen verfolgt. Jede Kausalkante hat eine frei
-definierbare Formel (kein fester "Staerke"-Sonderfall), die beliebig viele oekonomische
-Parameter (Elastizitaeten, Daempfungsfaktoren, Deckelungen, ...) referenzieren kann.
-
-### Aufbau
+## Aufbau
 
 - `kausalrechner/formula_eval.py` – sichere Formelauswertung auf Basis von `ast` (nur
   Grundrechenarten, Vergleiche, `min`/`max`/`abs`/`round`; kein Datei-/Netzwerk-/Import-Zugriff).
@@ -29,7 +28,7 @@ Parameter (Elastizitaeten, Daempfungsfaktoren, Deckelungen, ...) referenzieren k
 - `kausalrechner/cli.py` – CLI-Einstiegspunkt.
 - `tests/` – pytest-Tests fuer Formelauswertung, Graph-Traversierung und Parameter-DB.
 
-### Testen
+## Testen
 
 1. Repository klonen und ins Verzeichnis wechseln:
    ```bash
@@ -56,10 +55,3 @@ Parameter (Elastizitaeten, Daempfungsfaktoren, Deckelungen, ...) referenzieren k
 6. Sicherheit der Formelauswertung pruefen: `tests/test_formula_eval.py` zeigt, dass z.B.
    `__import__(...)`, `open(...)` oder Attributzugriffe (`x.__class__`) mit `FormelFehler`
    abgelehnt werden.
-
-## Alte Struktur (`Platzhalter`, nicht mehr aktiv gepflegt)
-
-`data_loader.py`, `lookup.py`, `main.py` und `data/synonyme.json`, `data/kausaldaten.json`,
-`data/formelzeichen.json` im Root-Verzeichnis stammen aus einer fruehen Vorversion (Synonym-
-Lookup + Formelzeichen-Standardwerte ohne Graph/Formeln pro Kante) und wurden bewusst als
-Platzhalter im Repo belassen. Sie werden vom neuen `kausalrechner`-Paket nicht verwendet.
