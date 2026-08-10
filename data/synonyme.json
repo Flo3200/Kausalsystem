@@ -1,0 +1,10 @@
+{
+  "kraft": {
+    "anzeigename": "Kraft",
+    "synonyme": ["kraft", "force"]
+  },
+  "geschwindigkeit": {
+    "anzeigename": "Geschwindigkeit",
+    "synonyme": ["geschwindigkeit", "tempo", "speed"]
+  }
+}
