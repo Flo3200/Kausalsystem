@@ -1,7 +1,0 @@
-{
-  "kraft_beschleunigung": {
-    "ursache": "kraft",
-    "wirkung": "beschleunigung",
-    "beziehung": "F = m * a"
-  }
-}
