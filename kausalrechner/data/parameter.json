@@ -1,6 +1,6 @@
 {
   "elastizitaet_steuer_investitionen": {
-    "standardwert": 0.6,
+    "standardwert": 2.0,
     "beschreibung": "Elastizitaet Unternehmenssteuer -> Investitionen",
     "min": 0,
     "max": 2
