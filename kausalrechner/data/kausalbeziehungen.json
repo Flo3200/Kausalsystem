@@ -1,0 +1,38 @@
+[
+  {
+    "von": "unternehmenssteuer",
+    "nach": "investitionen",
+    "formel": "-effekt * elastizitaet_steuer_investitionen",
+    "beschreibung": "Hoehere Unternehmenssteuer senkt Investitionen gemaess Elastizitaet"
+  },
+  {
+    "von": "unternehmenssteuer",
+    "nach": "steuereinnahmen",
+    "formel": "effekt * (1 - daempfung_laffer)",
+    "beschreibung": "Hoehere Steuer erhoeht Einnahmen, gedaempft durch Ausweich-/Vermeidungseffekte"
+  },
+  {
+    "von": "investitionen",
+    "nach": "beschaeftigung",
+    "formel": "effekt * elastizitaet_investitionen_beschaeftigung / (1 + tiefe * daempfung_kette)",
+    "beschreibung": "Investitionsaenderung wirkt ueber die Kettenlaenge gedaempft auf Beschaeftigung"
+  },
+  {
+    "von": "beschaeftigung",
+    "nach": "konsum",
+    "formel": "max(-deckel_konsum, min(deckel_konsum, effekt * elastizitaet_beschaeftigung_konsum))",
+    "beschreibung": "Beschaeftigungseffekt wirkt gedeckelt auf Konsum"
+  },
+  {
+    "von": "konsum",
+    "nach": "steuereinnahmen",
+    "formel": "effekt * elastizitaet_konsum_steuereinnahmen",
+    "beschreibung": "Konsumaenderung wirkt ueber Mehrwertsteuer auf Steuereinnahmen zurueck"
+  },
+  {
+    "von": "konsum",
+    "nach": "investitionen",
+    "formel": "effekt * elastizitaet_konsum_investitionen",
+    "beschreibung": "Konsumnachfrage kurbelt zusaetzliche Investitionen an (Rueckkopplung, erzeugt bewusst einen Zyklus zum Testen der Zyklenerkennung)"
+  }
+]
