@@ -1,20 +1,30 @@
 """Interaktiver Einstiegspunkt: fragt Konzept/Richtung/Staerke/Kontext ab und nutzt
 optional lokale LLMs fuer Begriffs-Vorschlag, Parameterschaetzung und Berichtstext.
 
-Vor jedem LLM-Einsatz wird der Nutzer gefragt, ob er ihn nutzen moechte. Bei
-Ablehnung (oder wenn kein Modellpfad konfiguriert ist) laeuft der Ablauf ohne
-LLM weiter (manuelle Eingabe / Standardwerte / kein Bericht).
+Vor jedem LLM-Einsatz wird der Nutzer explizit gefragt, ob er ihn nutzen moechte.
+Bei Ablehnung (oder wenn das Modell nicht geladen werden kann) laeuft der Ablauf
+ohne LLM weiter (manuelle Eingabe / Standardwerte / kein Bericht).
 
-Modellpfade werden ueber Umgebungsvariablen konfiguriert (siehe README):
-    KAUSAL_LLM_SYNONYM_MODEL_PATH   - kleines Modell (z.B. Llama 3B) fuer Begriffs-Vorschlaege
-    KAUSAL_LLM_PARAM_MODEL_PATH     - Finanz-/Wirtschafts-Modell fuer Parameterschaetzung
-    KAUSAL_LLM_REPORT_MODEL_PATH    - Modell fuer den abschliessenden Fliesstext-Bericht
+Standardmaessig konfigurierte, real existierende Modelle (siehe README fuer
+Quellenangaben und Google-Colab-Installationsbefehle):
+
+    Begriffs-Vorschlag (klein/schnell): bartowski/Llama-3.2-3B-Instruct-GGUF
+        (Quantisierung von meta-llama/Llama-3.2-3B-Instruct), Backend llama_cpp.
+    Parameterschaetzung:                DragonLLM/Llama-Open-Finance-8B
+        (Llama-3.1-8B, auf Finanzdaten in EN/FR/DE feingetunt), Backend transformers.
+    Abschlussbericht:                   DragonLLM/Llama-Open-Finance-8B (wiederverwendet).
+
+Jeder der drei Bausteine kann per Umgebungsvariable ueberschrieben werden:
+    KAUSAL_LLM_SYNONYM_BACKEND / _REPO_ID / _DATEINAME / _LOKALER_PFAD
+    KAUSAL_LLM_PARAM_BACKEND   / _REPO_ID / _DATEINAME / _LOKALER_PFAD
+    KAUSAL_LLM_REPORT_BACKEND  / _REPO_ID / _DATEINAME / _LOKALER_PFAD
 
 Aufruf:
     python -m kausalrechner.interactive
 """
 import os
 import sys
+from dataclasses import replace
 
 from .cli import RICHTUNGEN, _drucke_ergebnis
 from .data_loader import lade_alle, lade_dsge_modelle
@@ -27,9 +37,40 @@ from .llm_synonyms import schlage_konzept_vor
 from .parameters import parameter_werte
 from .synonyms import baue_synonym_index, begriff_zu_id
 
-MODELL_PFAD_SYNONYM = os.environ.get("KAUSAL_LLM_SYNONYM_MODEL_PATH", "")
-MODELL_PFAD_PARAMETER = os.environ.get("KAUSAL_LLM_PARAM_MODEL_PATH", "")
-MODELL_PFAD_BERICHT = os.environ.get("KAUSAL_LLM_REPORT_MODEL_PATH", "")
+STANDARD_MODELL_SYNONYM = LLMKonfiguration(
+    backend="llama_cpp",
+    repo_id="bartowski/Llama-3.2-3B-Instruct-GGUF",
+    dateiname="Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+    max_tokens=64,
+)
+STANDARD_MODELL_PARAMETER = LLMKonfiguration(
+    backend="transformers",
+    repo_id="DragonLLM/Llama-Open-Finance-8B",
+    max_tokens=512,
+)
+STANDARD_MODELL_BERICHT = LLMKonfiguration(
+    backend="transformers",
+    repo_id="DragonLLM/Llama-Open-Finance-8B",
+    max_tokens=400,
+)
+
+
+def _konfiguration_mit_umgebungs_override(standard, env_prefix):
+    """Erlaubt, jedes Feld der Standard-Konfiguration per Umgebungsvariable zu
+    ueberschreiben, ohne dass die Defaults (echte, real existierende Modelle)
+    angefasst werden muessen."""
+    return replace(
+        standard,
+        backend=os.environ.get(f"{env_prefix}_BACKEND", standard.backend),
+        repo_id=os.environ.get(f"{env_prefix}_REPO_ID", standard.repo_id),
+        dateiname=os.environ.get(f"{env_prefix}_DATEINAME", standard.dateiname),
+        lokaler_pfad=os.environ.get(f"{env_prefix}_LOKALER_PFAD", standard.lokaler_pfad),
+    )
+
+
+MODELL_SYNONYM = _konfiguration_mit_umgebungs_override(STANDARD_MODELL_SYNONYM, "KAUSAL_LLM_SYNONYM")
+MODELL_PARAMETER = _konfiguration_mit_umgebungs_override(STANDARD_MODELL_PARAMETER, "KAUSAL_LLM_PARAM")
+MODELL_BERICHT = _konfiguration_mit_umgebungs_override(STANDARD_MODELL_BERICHT, "KAUSAL_LLM_REPORT")
 
 
 def _frage_ja_nein(text):
@@ -37,13 +78,11 @@ def _frage_ja_nein(text):
     return antwort in ("j", "ja", "y", "yes")
 
 
-def _hole_generator(modell_pfad, max_tokens=512):
-    """Baut einen generiere()-Callable fuer den gegebenen Modellpfad, oder None,
-    falls kein Pfad konfiguriert ist oder das Laden fehlschlaegt."""
-    if not modell_pfad:
-        print("  (kein Modellpfad konfiguriert - siehe README fuer die noetige Umgebungsvariable)")
-        return None
-    konfig = LLMKonfiguration(modell_pfad=modell_pfad, max_tokens=max_tokens)
+def _hole_generator(konfig):
+    """Baut einen generiere()-Callable fuer die gegebene Konfiguration und prueft
+    per Testaufruf sofort, ob das Modell geladen werden kann. Gibt None zurueck,
+    falls das fehlschlaegt (z.B. Backend nicht installiert, Modell nicht
+    erreichbar) - der Ablauf laeuft dann ohne LLM weiter."""
     generator = erzeuge_generator(konfig)
     try:
         generator("PARAMETER: test=0\n</ende>")
@@ -102,10 +141,11 @@ def main():
 
     while start_id is None:
         genutzt_llm_vorschlag = False
-        if MODELL_PFAD_SYNONYM and _frage_ja_nein(
-            f"Konzept '{konzept_eingabe}' nicht gefunden. LLM nach einem passenden bekannten Begriff fragen?"
+        if _frage_ja_nein(
+            f"Konzept '{konzept_eingabe}' nicht gefunden. LLM ({MODELL_SYNONYM.repo_id}) nach "
+            f"einem passenden bekannten Begriff fragen?"
         ):
-            generator = _hole_generator(MODELL_PFAD_SYNONYM, max_tokens=64)
+            generator = _hole_generator(MODELL_SYNONYM)
             vorschlag = schlage_konzept_vor(generator, konzept_eingabe, id_zu_anzeigename) if generator else None
             if vorschlag and _frage_ja_nein(f"Meintest du '{vorschlag}'?"):
                 konzept_eingabe = vorschlag
@@ -126,8 +166,8 @@ def main():
 
     aktive_parameter = dict(parameter_werte(parameter_db))
 
-    if MODELL_PFAD_PARAMETER and _frage_ja_nein("LLM zur Schaetzung der Modellparameter aus dem Szenario nutzen?"):
-        generator = _hole_generator(MODELL_PFAD_PARAMETER)
+    if _frage_ja_nein(f"LLM ({MODELL_PARAMETER.repo_id}) zur Schaetzung der Modellparameter nutzen?"):
+        generator = _hole_generator(MODELL_PARAMETER)
         if generator:
             ziel_parameter = list(parameter_db.keys())
             schaetzung = schaetze_parameter(
@@ -165,8 +205,8 @@ def main():
             print(f"  {name} = {wert:+.5f}")
         dsge_text = "\n".join(f"{n} = {w:+.5f}" for n, w in werte.items())
 
-    if MODELL_PFAD_BERICHT and _frage_ja_nein("\nLLM-Bericht als Fliesstext erzeugen lassen?"):
-        generator = _hole_generator(MODELL_PFAD_BERICHT)
+    if _frage_ja_nein(f"\nLLM ({MODELL_BERICHT.repo_id}) fuer einen Fliesstext-Bericht nutzen?"):
+        generator = _hole_generator(MODELL_BERICHT)
         if generator:
             schritte_text = "\n".join(
                 f"{s.von}->{s.nach}: {s.eingehender_effekt:+.3f} -> {s.ausgehender_effekt:+.3f}"
