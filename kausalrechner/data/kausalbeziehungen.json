@@ -34,5 +34,179 @@
     "nach": "investitionen",
     "formel": "effekt * elastizitaet_konsum_investitionen",
     "beschreibung": "Konsumnachfrage kurbelt zusaetzliche Investitionen an (Rueckkopplung, erzeugt bewusst einen Zyklus zum Testen der Zyklenerkennung)"
+  },
+  {
+    "von": "zinssatz",
+    "nach": "investitionen",
+    "formel": "-effekt * elastizitaet_zins_investitionen",
+    "beschreibung": "Ein hoeherer Zinssatz verteuert die Fremdkapitalkosten und senkt Investitionen"
+  },
+  {
+    "von": "zinssatz",
+    "nach": "konsum",
+    "formel": "-effekt * elastizitaet_zins_konsum",
+    "beschreibung": "Ein hoeherer Zinssatz erhoeht den Anreiz zu sparen statt zu konsumieren (intertemporale Substitution)"
+  },
+  {
+    "von": "zinssatz",
+    "nach": "wechselkurs",
+    "formel": "-effekt * elastizitaet_zins_wechselkurs",
+    "beschreibung": "Ein hoeherer Zinssatz zieht Kapital an und wertet die Waehrung auf (Wechselkurs sinkt, da hier als Abwertungsmass definiert), gemaess Zinsparitaet"
+  },
+  {
+    "von": "zinssatz",
+    "nach": "kreditvergabe",
+    "formel": "-effekt * elastizitaet_zins_kreditvergabe",
+    "beschreibung": "Ein hoeherer Zinssatz verteuert Kredite und daempft die Kreditvergabe der Banken"
+  },
+  {
+    "von": "zinssatz",
+    "nach": "aktienmarkt",
+    "formel": "-effekt * elastizitaet_zins_aktienmarkt",
+    "beschreibung": "Ein hoeherer Zinssatz erhoeht den Diskontierungssatz kuenftiger Gewinne und senkt Aktienbewertungen"
+  },
+  {
+    "von": "geldmenge",
+    "nach": "inflation",
+    "formel": "effekt * elastizitaet_geldmenge_inflation",
+    "beschreibung": "Staerkeres Geldmengenwachstum erhoeht mittelfristig die Inflation (Quantitaetstheorie)"
+  },
+  {
+    "von": "geldmenge",
+    "nach": "zinssatz",
+    "formel": "-effekt * elastizitaet_geldmenge_zins",
+    "beschreibung": "Ein Anstieg der Geldmenge senkt kurzfristig den Marktzins (Liquiditaetseffekt)"
+  },
+  {
+    "von": "staatsausgaben",
+    "nach": "bip",
+    "formel": "effekt * elastizitaet_staatsausgaben_bip",
+    "beschreibung": "Hoehere Staatsausgaben erhoehen das BIP ueber den fiskalischen Multiplikator"
+  },
+  {
+    "von": "staatsausgaben",
+    "nach": "beschaeftigung",
+    "formel": "effekt * elastizitaet_staatsausgaben_beschaeftigung",
+    "beschreibung": "Hoehere Staatsausgaben erhoehen direkt und indirekt die Beschaeftigung"
+  },
+  {
+    "von": "bip",
+    "nach": "beschaeftigung",
+    "formel": "effekt * elastizitaet_bip_beschaeftigung",
+    "beschreibung": "Staerkeres BIP-Wachstum erhoeht die Beschaeftigung (Okun'sches Gesetz, Kausalketten-Variante)"
+  },
+  {
+    "von": "bip",
+    "nach": "steuereinnahmen",
+    "formel": "effekt * elastizitaet_bip_steuereinnahmen",
+    "beschreibung": "Ein hoeheres BIP erhoeht die Steuereinnahmen ueber eine breitere Bemessungsgrundlage"
+  },
+  {
+    "von": "beschaeftigung",
+    "nach": "arbeitslosigkeit",
+    "formel": "-effekt * elastizitaet_beschaeftigung_arbeitslosigkeit",
+    "beschreibung": "Steigende Beschaeftigung senkt die Arbeitslosigkeit"
+  },
+  {
+    "von": "arbeitslosigkeit",
+    "nach": "loehne",
+    "formel": "-effekt * elastizitaet_arbeitslosigkeit_loehne",
+    "beschreibung": "Steigende Arbeitslosigkeit schwaecht die Verhandlungsmacht der Beschaeftigten und daempft Loehne (Lohn-Phillips-Kurve)"
+  },
+  {
+    "von": "loehne",
+    "nach": "konsum",
+    "formel": "effekt * elastizitaet_loehne_konsum",
+    "beschreibung": "Hoehere Loehne erhoehen das verfuegbare Einkommen und damit den Konsum"
+  },
+  {
+    "von": "loehne",
+    "nach": "inflation",
+    "formel": "effekt * elastizitaet_loehne_inflation",
+    "beschreibung": "Hoehere Loehne erhoehen die Lohnstueckkosten und wirken inflationaer (Lohn-Preis-Spirale)"
+  },
+  {
+    "von": "produktivitaet",
+    "nach": "loehne",
+    "formel": "effekt * elastizitaet_produktivitaet_loehne",
+    "beschreibung": "Hoehere Produktivitaet erlaubt mittelfristig hoehere Reallohnzuwaechse ohne Inflationsdruck"
+  },
+  {
+    "von": "produktivitaet",
+    "nach": "bip",
+    "formel": "effekt * elastizitaet_produktivitaet_bip",
+    "beschreibung": "Hoehere Produktivitaet erhoeht direkt die gesamtwirtschaftliche Produktion"
+  },
+  {
+    "von": "investitionen",
+    "nach": "produktivitaet",
+    "formel": "effekt * elastizitaet_investitionen_produktivitaet / (1 + tiefe * daempfung_kette)",
+    "beschreibung": "Investitionen erhoehen ueber Kapitalvertiefung mittelfristig die Produktivitaet"
+  },
+  {
+    "von": "wechselkurs",
+    "nach": "exporte",
+    "formel": "effekt * elastizitaet_wechselkurs_exporte",
+    "beschreibung": "Eine Abwertung (steigender Wechselkurs-Indexwert) verbilligt heimische Guter im Ausland und erhoeht Exporte"
+  },
+  {
+    "von": "wechselkurs",
+    "nach": "importe",
+    "formel": "-effekt * elastizitaet_wechselkurs_importe",
+    "beschreibung": "Eine Abwertung verteuert auslaendische Guter im Inland und senkt Importe"
+  },
+  {
+    "von": "exporte",
+    "nach": "handelsbilanz",
+    "formel": "effekt * gewicht_exporte_handelsbilanz",
+    "beschreibung": "Hoehere Exporte verbessern die Handelsbilanz"
+  },
+  {
+    "von": "importe",
+    "nach": "handelsbilanz",
+    "formel": "-effekt * gewicht_importe_handelsbilanz",
+    "beschreibung": "Hoehere Importe verschlechtern die Handelsbilanz"
+  },
+  {
+    "von": "handelsbilanz",
+    "nach": "bip",
+    "formel": "effekt * elastizitaet_handelsbilanz_bip",
+    "beschreibung": "Eine verbesserte Handelsbilanz (hoehere Nettoexporte) erhoeht das BIP direkt (Nachfragekomponente)"
+  },
+  {
+    "von": "verbrauchervertrauen",
+    "nach": "konsum",
+    "formel": "effekt * elastizitaet_verbrauchervertrauen_konsum",
+    "beschreibung": "Hoeheres Verbrauchervertrauen erhoeht die Konsumbereitschaft der Haushalte"
+  },
+  {
+    "von": "konsum",
+    "nach": "bip",
+    "formel": "effekt * elastizitaet_konsum_bip",
+    "beschreibung": "Konsum ist die groesste Nachfragekomponente des BIP"
+  },
+  {
+    "von": "aktienmarkt",
+    "nach": "konsum",
+    "formel": "effekt * elastizitaet_aktienmarkt_konsum",
+    "beschreibung": "Steigende Vermoegenspreise erhoehen ueber den Vermoegenseffekt den Konsum"
+  },
+  {
+    "von": "kreditvergabe",
+    "nach": "investitionen",
+    "formel": "effekt * elastizitaet_kreditvergabe_investitionen",
+    "beschreibung": "Staerkeres Kreditwachstum erleichtert die Finanzierung von Investitionen"
+  },
+  {
+    "von": "sparquote",
+    "nach": "konsum",
+    "formel": "-effekt * elastizitaet_sparquote_konsum",
+    "beschreibung": "Eine hoehere Sparquote geht direkt zulasten des Konsums (Einkommen wird nicht ausgegeben)"
+  },
+  {
+    "von": "sparquote",
+    "nach": "investitionen",
+    "formel": "effekt * elastizitaet_sparquote_investitionen",
+    "beschreibung": "Hoehere Ersparnisse erhoehen das Angebot an loanable funds und erleichtern Investitionsfinanzierung"
   }
 ]
