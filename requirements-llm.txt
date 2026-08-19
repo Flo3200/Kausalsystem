@@ -1,1 +1,7 @@
-PLACEHOLDER
+# Optionale Abhaengigkeiten fuer die LLM-gestuetzten Funktionen
+# (Parameterschaetzung, Berichtstext, Begriffs-Vorschlag). Der Kausalrechner
+# selbst (kausalrechner/*) und der DSGE-Solver (kausalrechner/dsge.py)
+# benoetigen weiterhin KEINE externen Abhaengigkeiten.
+llama-cpp-python>=0.2.90
+huggingface_hub>=0.23
+pytest>=7.4
