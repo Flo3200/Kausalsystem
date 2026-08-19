@@ -1,7 +1,13 @@
 {
   "unternehmenssteuer": {
     "anzeigename": "Unternehmenssteuer",
-    "synonyme": ["unternehmenssteuer", "unternehmensteuer", "koerperschaftsteuer", "company tax"]
+    "synonyme": ["unternehmenssteuer", "unternehmensteuer", "koerperschaftsteuer", "company tax"],
+    "dsge": {
+      "modell": "nk_5gleichungen",
+      "schock_parameter": "kostendruck_schock",
+      "schock_skalierung": 0.005,
+      "beschreibung": "Eine Unternehmenssteueraenderung wirkt als Kostendruckschock auf die Phillips-Kurve: hoehere Steuer erhoeht die Grenzkosten der Unternehmen (positiver Schock, inflationaer), geringere Steuer senkt sie (negativer Schock, disinflationaer)."
+    }
   },
   "investitionen": {
     "anzeigename": "Investitionen",
@@ -18,5 +24,75 @@
   "steuereinnahmen": {
     "anzeigename": "Steuereinnahmen",
     "synonyme": ["steuereinnahmen", "staatseinnahmen", "tax revenue"]
+  },
+  "zinssatz": {
+    "anzeigename": "Zinssatz",
+    "synonyme": ["zinssatz", "leitzins", "zinsen", "notenbankzins", "zinsniveau", "interest rate", "policy rate"],
+    "dsge": {
+      "modell": "nk_5gleichungen",
+      "schock_parameter": "geldpolitischer_schock",
+      "schock_skalierung": 0.005,
+      "beschreibung": "Eine Leitzinsaenderung wirkt als direkter Schock auf die Taylor-Regel (geldpolitische Straffung/Lockerung ueber den systematischen Reaktionsteil hinaus)."
+    }
+  },
+  "inflation": {
+    "anzeigename": "Inflation",
+    "synonyme": ["inflation", "teuerung", "preissteigerung", "inflationsrate", "inflation rate"]
+  },
+  "bip": {
+    "anzeigename": "Bruttoinlandsprodukt",
+    "synonyme": ["bip", "bruttoinlandsprodukt", "wirtschaftswachstum", "gdp", "gesamtwirtschaftliche produktion"]
+  },
+  "arbeitslosigkeit": {
+    "anzeigename": "Arbeitslosigkeit",
+    "synonyme": ["arbeitslosigkeit", "arbeitslosenquote", "unemployment"]
+  },
+  "geldmenge": {
+    "anzeigename": "Geldmenge",
+    "synonyme": ["geldmenge", "geldmengenwachstum", "money supply"]
+  },
+  "staatsausgaben": {
+    "anzeigename": "Staatsausgaben",
+    "synonyme": ["staatsausgaben", "staatliche ausgaben", "fiskalpolitik", "government spending"]
+  },
+  "wechselkurs": {
+    "anzeigename": "Wechselkurs",
+    "synonyme": ["wechselkurs", "waehrungskurs", "währungskurs", "exchange rate"]
+  },
+  "exporte": {
+    "anzeigename": "Exporte",
+    "synonyme": ["exporte", "ausfuhren", "exports"]
+  },
+  "importe": {
+    "anzeigename": "Importe",
+    "synonyme": ["importe", "einfuhren", "imports"]
+  },
+  "handelsbilanz": {
+    "anzeigename": "Handelsbilanz",
+    "synonyme": ["handelsbilanz", "aussenhandelsbilanz", "außenhandelsbilanz", "nettoexporte", "trade balance"]
+  },
+  "loehne": {
+    "anzeigename": "Loehne",
+    "synonyme": ["loehne", "löhne", "lohnniveau", "wages"]
+  },
+  "produktivitaet": {
+    "anzeigename": "Produktivitaet",
+    "synonyme": ["produktivitaet", "produktivität", "arbeitsproduktivitaet", "productivity"]
+  },
+  "verbrauchervertrauen": {
+    "anzeigename": "Verbrauchervertrauen",
+    "synonyme": ["verbrauchervertrauen", "konsumentenvertrauen", "consumer confidence"]
+  },
+  "aktienmarkt": {
+    "anzeigename": "Aktienmarkt",
+    "synonyme": ["aktienmarkt", "boerse", "börse", "stock market", "vermoegenspreise"]
+  },
+  "kreditvergabe": {
+    "anzeigename": "Kreditvergabe",
+    "synonyme": ["kreditvergabe", "bankkredite", "kreditwachstum", "bank lending"]
+  },
+  "sparquote": {
+    "anzeigename": "Sparquote",
+    "synonyme": ["sparquote", "sparrate", "savings rate"]
   }
 }
