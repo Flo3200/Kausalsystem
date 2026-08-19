@@ -1,1 +1,110 @@
-PLACEHOLDER
+{
+  "elastizitaet_steuer_investitionen": {
+    "standardwert": 2.0,
+    "beschreibung": "Elastizitaet Unternehmenssteuer -> Investitionen",
+    "min": 0,
+    "max": 2
+  },
+  "daempfung_laffer": {
+    "standardwert": 0.2,
+    "beschreibung": "Anteil, der durch Ausweich-/Vermeidungseffekte bei Steuereinnahmen verloren geht",
+    "min": 0,
+    "max": 1
+  },
+  "elastizitaet_investitionen_beschaeftigung": {
+    "standardwert": 0.4,
+    "beschreibung": "Elastizitaet Investitionen -> Beschaeftigung",
+    "min": 0,
+    "max": 2
+  },
+  "daempfung_kette": {
+    "standardwert": 0.15,
+    "beschreibung": "Daempfungsfaktor pro zusaetzlicher Kettentiefe",
+    "min": 0,
+    "max": 1
+  },
+  "elastizitaet_beschaeftigung_konsum": {
+    "standardwert": 0.5,
+    "beschreibung": "Elastizitaet Beschaeftigung -> Konsum",
+    "min": 0,
+    "max": 2
+  },
+  "deckel_konsum": {
+    "standardwert": 5.0,
+    "beschreibung": "Maximale Konsumaenderung in Prozentpunkten (Deckelung)",
+    "min": 0,
+    "max": 100
+  },
+  "elastizitaet_konsum_steuereinnahmen": {
+    "standardwert": 0.3,
+    "beschreibung": "Elastizitaet Konsum -> Steuereinnahmen (Mehrwertsteuer-Effekt)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_konsum_investitionen": {
+    "standardwert": 0.1,
+    "beschreibung": "Elastizitaet Konsum -> Investitionen (Nachfrage-Rueckkopplung)",
+    "min": 0,
+    "max": 2
+  },
+  "sigma": {
+    "standardwert": 1.0,
+    "beschreibung": "Zinselastizitaet der Produktionsluecke (IS-Kurve, DSGE-Modell nk_3gleichungen)",
+    "min": 0,
+    "max": 5
+  },
+  "beta": {
+    "standardwert": 0.99,
+    "beschreibung": "Diskontfaktor der Phillips-Kurve (DSGE-Modell nk_3gleichungen)",
+    "min": 0,
+    "max": 1
+  },
+  "kappa": {
+    "standardwert": 0.3,
+    "beschreibung": "Steigung der Phillips-Kurve: Produktionsluecke -> Inflation (DSGE-Modell nk_3gleichungen)",
+    "min": 0,
+    "max": 2
+  },
+  "phi_pi": {
+    "standardwert": 1.5,
+    "beschreibung": "Taylor-Regel-Reaktionskoeffizient auf Inflationsabweichung vom Ziel (DSGE-Modell nk_3gleichungen)",
+    "min": 0,
+    "max": 5
+  },
+  "phi_y": {
+    "standardwert": 0.5,
+    "beschreibung": "Taylor-Regel-Reaktionskoeffizient auf die Produktionsluecke (DSGE-Modell nk_3gleichungen)",
+    "min": 0,
+    "max": 5
+  },
+  "y_erwartung": {
+    "standardwert": 0.0,
+    "beschreibung": "Erwartete zukuenftige Produktionsluecke (DSGE-Modell nk_3gleichungen)",
+    "min": -10,
+    "max": 10
+  },
+  "pi_erwartung": {
+    "standardwert": 0.02,
+    "beschreibung": "Erwartete Inflation (DSGE-Modell nk_3gleichungen)",
+    "min": -0.1,
+    "max": 0.2
+  },
+  "pi_ziel": {
+    "standardwert": 0.02,
+    "beschreibung": "Inflationsziel der Zentralbank (DSGE-Modell nk_3gleichungen)",
+    "min": 0,
+    "max": 0.1
+  },
+  "r_natuerlich": {
+    "standardwert": 0.01,
+    "beschreibung": "Natuerlicher Realzins (DSGE-Modell nk_3gleichungen)",
+    "min": -0.05,
+    "max": 0.1
+  },
+  "kostendruck_schock": {
+    "standardwert": 0.0,
+    "beschreibung": "Exogener Kostendruckschock auf die Phillips-Kurve, z.B. aus einer Unternehmenssteueraenderung (DSGE-Modell nk_3gleichungen)",
+    "min": -0.1,
+    "max": 0.1
+  }
+}
