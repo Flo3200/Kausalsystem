@@ -2,6 +2,15 @@
 # (Parameterschaetzung, Berichtstext, Begriffs-Vorschlag). Der Kausalrechner
 # selbst (kausalrechner/*) und der DSGE-Solver (kausalrechner/dsge.py)
 # benoetigen weiterhin KEINE externen Abhaengigkeiten.
+#
+# llama-cpp-python: Backend "llama_cpp" (GGUF), Standard fuer das Synonym-Modell
+#   (bartowski/Llama-3.2-3B-Instruct-GGUF).
+# transformers/torch/accelerate: Backend "transformers", Standard fuer das
+#   Parameter- und Berichts-Modell (DragonLLM/Llama-Open-Finance-8B, liegt
+#   nicht als GGUF vor).
 llama-cpp-python>=0.2.90
+transformers>=4.43
+torch>=2.2
+accelerate>=0.33
 huggingface_hub>=0.23
 pytest>=7.4
