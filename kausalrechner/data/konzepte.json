@@ -1,1 +1,28 @@
-PLACEHOLDER
+{
+  "unternehmenssteuer": {
+    "anzeigename": "Unternehmenssteuer",
+    "synonyme": ["unternehmenssteuer", "unternehmensteuer", "koerperschaftsteuer", "company tax"],
+    "dsge": {
+      "modell": "nk_3gleichungen",
+      "schock_parameter": "kostendruck_schock",
+      "schock_skalierung": 0.005,
+      "beschreibung": "Eine Unternehmenssteueraenderung wirkt als Kostendruckschock auf die Phillips-Kurve: hoehere Steuer erhoeht die Grenzkosten der Unternehmen (positiver Schock, inflationaer), geringere Steuer senkt sie (negativer Schock, disinflationaer)."
+    }
+  },
+  "investitionen": {
+    "anzeigename": "Investitionen",
+    "synonyme": ["investitionen", "investment", "kapitalausgaben"]
+  },
+  "beschaeftigung": {
+    "anzeigename": "Beschaeftigung",
+    "synonyme": ["beschaeftigung", "beschäftigung", "arbeitsplaetze", "employment"]
+  },
+  "konsum": {
+    "anzeigename": "Konsum",
+    "synonyme": ["konsum", "konsumausgaben", "consumption"]
+  },
+  "steuereinnahmen": {
+    "anzeigename": "Steuereinnahmen",
+    "synonyme": ["steuereinnahmen", "staatseinnahmen", "tax revenue"]
+  }
+}
