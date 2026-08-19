@@ -47,63 +47,279 @@
     "min": 0,
     "max": 2
   },
+  "elastizitaet_zins_investitionen": {
+    "standardwert": 1.5,
+    "beschreibung": "Elastizitaet Zinssatz -> Investitionen (Kreditkostenkanal)",
+    "min": 0,
+    "max": 3
+  },
+  "elastizitaet_zins_konsum": {
+    "standardwert": 0.6,
+    "beschreibung": "Elastizitaet Zinssatz -> Konsum (intertemporale Substitution)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_zins_wechselkurs": {
+    "standardwert": 1.0,
+    "beschreibung": "Elastizitaet Zinssatz -> Wechselkurs (Zinsparitaet, vereinfachte Kausalketten-Variante)",
+    "min": 0,
+    "max": 3
+  },
+  "elastizitaet_zins_kreditvergabe": {
+    "standardwert": 1.2,
+    "beschreibung": "Elastizitaet Zinssatz -> Kreditvergabe",
+    "min": 0,
+    "max": 3
+  },
+  "elastizitaet_zins_aktienmarkt": {
+    "standardwert": 2.0,
+    "beschreibung": "Elastizitaet Zinssatz -> Aktienmarkt (Diskontierungskanal)",
+    "min": 0,
+    "max": 5
+  },
+  "elastizitaet_geldmenge_inflation": {
+    "standardwert": 0.4,
+    "beschreibung": "Elastizitaet Geldmenge -> Inflation (Quantitaetstheorie, mittelfristig)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_geldmenge_zins": {
+    "standardwert": 0.3,
+    "beschreibung": "Elastizitaet Geldmenge -> Zinssatz (kurzfristiger Liquiditaetseffekt)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_staatsausgaben_bip": {
+    "standardwert": 1.2,
+    "beschreibung": "Fiskalmultiplikator: Staatsausgaben -> BIP",
+    "min": 0,
+    "max": 3
+  },
+  "elastizitaet_staatsausgaben_beschaeftigung": {
+    "standardwert": 0.5,
+    "beschreibung": "Elastizitaet Staatsausgaben -> Beschaeftigung",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_bip_beschaeftigung": {
+    "standardwert": 0.5,
+    "beschreibung": "Okun'sches Gesetz (Kausalketten-Variante): BIP -> Beschaeftigung",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_bip_steuereinnahmen": {
+    "standardwert": 0.8,
+    "beschreibung": "Elastizitaet BIP -> Steuereinnahmen (breitere Bemessungsgrundlage)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_beschaeftigung_arbeitslosigkeit": {
+    "standardwert": 0.7,
+    "beschreibung": "Elastizitaet Beschaeftigung -> Arbeitslosigkeit (inverser Zusammenhang)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_arbeitslosigkeit_loehne": {
+    "standardwert": 0.3,
+    "beschreibung": "Lohn-Phillips-Kurve (Kausalketten-Variante): Arbeitslosigkeit -> Loehne",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_loehne_konsum": {
+    "standardwert": 0.6,
+    "beschreibung": "Elastizitaet Loehne -> Konsum (verfuegbares Einkommen)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_loehne_inflation": {
+    "standardwert": 0.25,
+    "beschreibung": "Lohn-Preis-Spirale: Loehne -> Inflation",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_produktivitaet_loehne": {
+    "standardwert": 0.5,
+    "beschreibung": "Elastizitaet Produktivitaet -> Loehne",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_produktivitaet_bip": {
+    "standardwert": 0.7,
+    "beschreibung": "Elastizitaet Produktivitaet -> BIP",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_investitionen_produktivitaet": {
+    "standardwert": 0.3,
+    "beschreibung": "Kapitalvertiefung: Investitionen -> Produktivitaet",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_wechselkurs_exporte": {
+    "standardwert": 0.5,
+    "beschreibung": "Elastizitaet Wechselkurs (Abwertung) -> Exporte",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_wechselkurs_importe": {
+    "standardwert": 0.4,
+    "beschreibung": "Elastizitaet Wechselkurs (Abwertung) -> Importe (negativer Zusammenhang)",
+    "min": 0,
+    "max": 2
+  },
+  "gewicht_exporte_handelsbilanz": {
+    "standardwert": 1.0,
+    "beschreibung": "Gewicht Exporte -> Handelsbilanz",
+    "min": 0,
+    "max": 2
+  },
+  "gewicht_importe_handelsbilanz": {
+    "standardwert": 1.0,
+    "beschreibung": "Gewicht Importe -> Handelsbilanz (negativer Beitrag)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_handelsbilanz_bip": {
+    "standardwert": 0.3,
+    "beschreibung": "Elastizitaet Handelsbilanz -> BIP (Nettoexport-Komponente)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_verbrauchervertrauen_konsum": {
+    "standardwert": 0.4,
+    "beschreibung": "Elastizitaet Verbrauchervertrauen -> Konsum",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_konsum_bip": {
+    "standardwert": 0.6,
+    "beschreibung": "Anteil/Elastizitaet Konsum -> BIP (groesste Nachfragekomponente)",
+    "min": 0,
+    "max": 1
+  },
+  "elastizitaet_aktienmarkt_konsum": {
+    "standardwert": 0.05,
+    "beschreibung": "Vermoegenseffekt: Aktienmarkt -> Konsum",
+    "min": 0,
+    "max": 1
+  },
+  "elastizitaet_kreditvergabe_investitionen": {
+    "standardwert": 0.5,
+    "beschreibung": "Elastizitaet Kreditvergabe -> Investitionen",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_sparquote_konsum": {
+    "standardwert": 0.8,
+    "beschreibung": "Elastizitaet Sparquote -> Konsum (negativer Zusammenhang)",
+    "min": 0,
+    "max": 2
+  },
+  "elastizitaet_sparquote_investitionen": {
+    "standardwert": 0.3,
+    "beschreibung": "Loanable-Funds-Kanal: Sparquote -> Investitionen",
+    "min": 0,
+    "max": 2
+  },
   "sigma": {
     "standardwert": 1.0,
-    "beschreibung": "Zinselastizitaet der Produktionsluecke (IS-Kurve, DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Zinselastizitaet der Produktionsluecke (IS-Kurve, DSGE-Modell nk_5gleichungen)",
     "min": 0,
     "max": 5
   },
   "beta": {
     "standardwert": 0.99,
-    "beschreibung": "Diskontfaktor der Phillips-Kurve (DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Diskontfaktor der Phillips-Kurve (DSGE-Modell nk_5gleichungen)",
     "min": 0,
     "max": 1
   },
   "kappa": {
     "standardwert": 0.3,
-    "beschreibung": "Steigung der Phillips-Kurve: Produktionsluecke -> Inflation (DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Steigung der Phillips-Kurve: Produktionsluecke -> Inflation (DSGE-Modell nk_5gleichungen)",
     "min": 0,
     "max": 2
   },
   "phi_pi": {
     "standardwert": 1.5,
-    "beschreibung": "Taylor-Regel-Reaktionskoeffizient auf Inflationsabweichung vom Ziel (DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Taylor-Regel-Reaktionskoeffizient auf Inflationsabweichung vom Ziel (DSGE-Modell nk_5gleichungen)",
     "min": 0,
     "max": 5
   },
   "phi_y": {
     "standardwert": 0.5,
-    "beschreibung": "Taylor-Regel-Reaktionskoeffizient auf die Produktionsluecke (DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Taylor-Regel-Reaktionskoeffizient auf die Produktionsluecke (DSGE-Modell nk_5gleichungen)",
     "min": 0,
     "max": 5
   },
   "y_erwartung": {
     "standardwert": 0.0,
-    "beschreibung": "Erwartete zukuenftige Produktionsluecke (DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Erwartete zukuenftige Produktionsluecke (DSGE-Modell nk_5gleichungen)",
     "min": -10,
     "max": 10
   },
   "pi_erwartung": {
     "standardwert": 0.02,
-    "beschreibung": "Erwartete Inflation (DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Erwartete Inflation (DSGE-Modell nk_5gleichungen)",
     "min": -0.1,
     "max": 0.2
   },
   "pi_ziel": {
     "standardwert": 0.02,
-    "beschreibung": "Inflationsziel der Zentralbank (DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Inflationsziel der Zentralbank (DSGE-Modell nk_5gleichungen)",
     "min": 0,
     "max": 0.1
   },
   "r_natuerlich": {
     "standardwert": 0.01,
-    "beschreibung": "Natuerlicher Realzins (DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Natuerlicher Realzins (DSGE-Modell nk_5gleichungen)",
     "min": -0.05,
     "max": 0.1
   },
   "kostendruck_schock": {
     "standardwert": 0.0,
-    "beschreibung": "Exogener Kostendruckschock auf die Phillips-Kurve, z.B. aus einer Unternehmenssteueraenderung (DSGE-Modell nk_3gleichungen)",
+    "beschreibung": "Exogener Kostendruckschock auf die Phillips-Kurve, z.B. aus einer Unternehmenssteueraenderung (DSGE-Modell nk_5gleichungen)",
+    "min": -0.1,
+    "max": 0.1
+  },
+  "gamma_nx": {
+    "standardwert": 0.3,
+    "beschreibung": "Wirkung des Wechselkurses (Abwertung) auf die Produktionsluecke ueber Nettoexporte (DSGE-Modell nk_5gleichungen)",
+    "min": 0,
+    "max": 2
+  },
+  "auslaendischer_zins": {
+    "standardwert": 0.02,
+    "beschreibung": "Auslaendisches Zinsniveau fuer die Zinsparitaet (DSGE-Modell nk_5gleichungen)",
+    "min": -0.05,
+    "max": 0.1
+  },
+  "erwartete_wechselkursaenderung": {
+    "standardwert": 0.0,
+    "beschreibung": "Erwartete Wechselkursaenderung in der Zinsparitaet-Gleichung (DSGE-Modell nk_5gleichungen)",
+    "min": -0.2,
+    "max": 0.2
+  },
+  "uip_sensitivitaet": {
+    "standardwert": 0.5,
+    "beschreibung": "Sensitivitaet des Wechselkurses auf Zinsdifferenzen (ungedeckte Zinsparitaet, DSGE-Modell nk_5gleichungen)",
+    "min": 0,
+    "max": 3
+  },
+  "natuerliche_arbeitslosigkeit": {
+    "standardwert": 0.05,
+    "beschreibung": "Natuerliche (strukturelle) Arbeitslosenquote (DSGE-Modell nk_5gleichungen)",
+    "min": 0,
+    "max": 0.2
+  },
+  "okun_koeffizient": {
+    "standardwert": 0.5,
+    "beschreibung": "Okun-Koeffizient: Wirkung der Produktionsluecke auf die Arbeitslosenquote (DSGE-Modell nk_5gleichungen)",
+    "min": 0,
+    "max": 2
+  },
+  "geldpolitischer_schock": {
+    "standardwert": 0.0,
+    "beschreibung": "Exogener geldpolitischer Schock auf die Taylor-Regel, z.B. aus einer Leitzinsaenderung (DSGE-Modell nk_5gleichungen)",
     "min": -0.1,
     "max": 0.1
   }
