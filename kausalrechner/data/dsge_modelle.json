@@ -1,12 +1,20 @@
 {
-  "nk_3gleichungen": {
-    "beschreibung": "Statisches 3-Gleichungen-Neukeynesianisches Modell (IS-Kurve, Phillips-Kurve, Taylor-Regel) zur simultanen Bestimmung von Produktionsluecke, Inflation und Nominalzins. Wird ueber einen Kostendruckschock (z.B. aus einer Unternehmenssteueraenderung) angestossen.",
-    "variablen": ["produktionsluecke", "inflation", "zins"],
+  "nk_5gleichungen": {
+    "beschreibung": "Statisches 5-Gleichungen-Neukeynesianisches Modell einer offenen Volkswirtschaft: IS-Kurve mit Aussenhandelskanal, Phillips-Kurve, Taylor-Regel, ungedeckte Zinsparitaet (UIP) fuer den Wechselkurs und Okun'sches Gesetz fuer die Arbeitslosigkeit. Loest simultan fuer Produktionsluecke, Inflation, Nominalzins, Wechselkurs (positiv = Abwertung) und Arbeitslosenquote. Wird ueber einen Kostendruckschock (z.B. Unternehmenssteueraenderung) und/oder einen geldpolitischen Schock (z.B. Leitzinsaenderung) angestossen.",
+    "variablen": ["produktionsluecke", "inflation", "zins", "wechselkurs", "arbeitslosigkeit"],
     "gleichungen": [
-      "produktionsluecke - (y_erwartung - sigma * (zins - pi_erwartung - r_natuerlich))",
+      "produktionsluecke - (y_erwartung - sigma * (zins - pi_erwartung - r_natuerlich) + gamma_nx * wechselkurs)",
       "inflation - (beta * pi_erwartung + kappa * produktionsluecke + kostendruck_schock)",
-      "zins - (r_natuerlich + pi_erwartung + phi_pi * (inflation - pi_ziel) + phi_y * produktionsluecke)"
+      "zins - (r_natuerlich + pi_erwartung + phi_pi * (inflation - pi_ziel) + phi_y * produktionsluecke + geldpolitischer_schock)",
+      "wechselkurs - (uip_sensitivitaet * (auslaendischer_zins - zins) + erwartete_wechselkursaenderung)",
+      "arbeitslosigkeit - (natuerliche_arbeitslosigkeit - okun_koeffizient * produktionsluecke)"
     ],
-    "startwerte": {"produktionsluecke": 0.0, "inflation": 0.02, "zins": 0.02}
+    "startwerte": {
+      "produktionsluecke": 0.0,
+      "inflation": 0.02,
+      "zins": 0.02,
+      "wechselkurs": 0.0,
+      "arbeitslosigkeit": 0.05
+    }
   }
 }
