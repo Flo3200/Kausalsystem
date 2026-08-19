@@ -1,1 +1,12 @@
-PLACEHOLDER
+{
+  "nk_3gleichungen": {
+    "beschreibung": "Statisches 3-Gleichungen-Neukeynesianisches Modell (IS-Kurve, Phillips-Kurve, Taylor-Regel) zur simultanen Bestimmung von Produktionsluecke, Inflation und Nominalzins. Wird ueber einen Kostendruckschock (z.B. aus einer Unternehmenssteueraenderung) angestossen.",
+    "variablen": ["produktionsluecke", "inflation", "zins"],
+    "gleichungen": [
+      "produktionsluecke - (y_erwartung - sigma * (zins - pi_erwartung - r_natuerlich))",
+      "inflation - (beta * pi_erwartung + kappa * produktionsluecke + kostendruck_schock)",
+      "zins - (r_natuerlich + pi_erwartung + phi_pi * (inflation - pi_ziel) + phi_y * produktionsluecke)"
+    ],
+    "startwerte": {"produktionsluecke": 0.0, "inflation": 0.02, "zins": 0.02}
+  }
+}
